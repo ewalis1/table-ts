@@ -8,6 +8,9 @@ import {
   TableHead,
   TableRow,
   Paper,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
 } from '@mui/material';
 
 interface IUser {
@@ -91,7 +94,15 @@ const TableComponent: React.FC = () => {
                 <TableCell align="left">{user.phoneNumber}</TableCell>
                 <TableCell align="left">{user.address}</TableCell>
                 <TableCell align="left">{user.dateOfBirth}</TableCell>
-                <TableCell align="left">{user.hobbies.join(' ')}</TableCell>
+                <TableCell align="left">
+                  {hobby.map((hob) => {
+                    if (user.hobbies.includes(hob.id as never)) {
+                      return hob.name + '; ';
+                    } else {
+                      return '';
+                    }
+                  })}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
